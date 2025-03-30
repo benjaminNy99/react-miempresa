@@ -1,35 +1,45 @@
+import { useNavigate } from "react-router";
+
 const MenusBar = ({ menus, currentPath }) => {
 
+    const navigate = useNavigate();
+    const handleMenuClick = (menu) => {
+        if (menu.submenus?.length === 0){
+            navigate(menu.key); // Cambia la URL sin recargar la página
+        }
+    }
+
     const isMenuOpen = (menu) => {
-        // if (menu.key === currentPath) return true; // Si el menú coincide con la ruta actual, se abre
-        // if (menu.submenus) {
-        //     return menu.submenus.some(sub => isMenuOpen(sub)); // Si un submenú coincide, abrir el padre también
-        // }
+        if (menu.key === currentPath) return true; // Si el menú coincide con la ruta actual, se abre
+        if (menu.submenus) {
+            return menu.submenus.some(sub => isMenuOpen(sub)); // Si un submenú coincide, abrir el padre también
+        }
         return false;
     };
 
     // Renderizado de los submenús
     const SubMenu = ({ submenus, parentId }) => (
         <ul className="list-group list-group-flush">
-            {submenus.map((submenu, i) => {
+            {submenus.map((sub, i) => {
                 const idCollapse = `${parentId}-submenu-${i}`;
-                const isOpen = isMenuOpen(submenu) ? "show" : "";
+                const isOpen = isMenuOpen(sub) ? "show" : "";
 
                 return (
-                    <li key={submenu.key} className="list-group-item">
+                    <li key={sub.key} className="list-group-item">
                         <button
                             className={`btn w-100 text-start ${isOpen ? "fw-bold" : ""}`}
                             type="button"
-                            data-bs-toggle={submenu.submenus ? "collapse" : ""}
+                            data-bs-toggle={sub.submenus ? "collapse" : ""}
                             data-bs-target={`#${idCollapse}`}
                             aria-expanded={isOpen ? "true" : "false"}
                             aria-controls={idCollapse}
+                            onClick={() => handleMenuClick(sub)}
                         >
-                            {submenu.name}
+                            {sub.name}
                         </button>
-                        {submenu.submenus && (
+                        {sub.submenus?.length > 0 && (
                             <div id={idCollapse} className={`collapse ${isOpen}`}>
-                                <SubMenu submenus={submenu.submenus} parentId={idCollapse} />
+                                <SubMenu submenus={sub.submenus} parentId={idCollapse} />
                             </div>
                         )}
                     </li>
@@ -56,6 +66,7 @@ const MenusBar = ({ menus, currentPath }) => {
                                 data-bs-target={`#${idcollpse}`}
                                 aria-expanded={isOpen ? "true" : "false"}
                                 aria-controls={idcollpse}
+                                onClick={() => handleMenuClick(m)}
                             >
                                 {m.name}
                             </button>
@@ -66,7 +77,7 @@ const MenusBar = ({ menus, currentPath }) => {
                             aria-labelledby={idheading}
                             data-bs-parent="#accordion-menus"
                         >
-                            {m.submenus.length > 0 && (
+                            {m.submenus?.length > 0 && (
                                 <SubMenu submenus={m.submenus} parentId={idcollpse} />
                             )}
                         </div>
