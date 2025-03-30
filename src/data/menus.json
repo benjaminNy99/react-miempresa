@@ -1,0 +1,147 @@
+{
+    "menus": [
+        {
+            "key": "/Empresa",
+            "name": "Empresa",
+            "title": "Gestión de la Empresa",
+            "description": "Menú principal para gestionar la Empresa",
+            "permissions": {
+                "crear_Empresa": true,
+                "editar_Empresa": false,
+                "eliminar_Empresa": true
+            },
+            "submenus": [
+                {
+                    "key": "/Empresa/finanzas",
+                    "name": "Finanzas",
+                    "title": "Gestión de Finanzas",
+                    "description": "Gestión de finanzas de la Empresa",
+                    "permissions": {
+                        "ver_finanzas": true,
+                        "editar_finanzas": true
+                    }
+                },
+                {
+                    "key": "/Empresa/reportes",
+                    "name": "Reportes",
+                    "title": "Generación de Reportes",
+                    "description": "Generar reportes de desempeño y finanzas",
+                    "permissions": {
+                        "ver_reportes": true,
+                        "generar_reportes": true
+                    }
+                }
+            ]
+        },
+        {
+            "key": "/RecursosHumanos",
+            "name": "Recursos Humanos",
+            "title": "Gestión de RRHH",
+            "description": "Menú para gestionar empleados y recursos humanos",
+            "permissions": {
+                "ver_empleados": true,
+                "agregar_empleado": true,
+                "eliminar_empleado": false
+            },
+            "submenus": [
+                {
+                    "key": "/RecursosHumanos/empleados",
+                    "name": "Empleados",
+                    "title": "Gestión de Empleados",
+                    "description": "Gestionar empleados",
+                    "permissions": {
+                        "ver_empleados": true,
+                        "agregar_empleado": true
+                    }
+                },
+                {
+                    "key": "/RecursosHumanos/ausencias",
+                    "name": "Ausencias",
+                    "title": "Gestión de Ausencias",
+                    "description": "Gestionar las ausencias de los empleados",
+                    "permissions": {
+                        "ver_ausencias": true,
+                        "aprobar_ausencias": false
+                    }
+                }
+            ]
+        },
+        {
+            "key": "/Inventario",
+            "name": "Inventario",
+            "title": "Gestión de Inventario",
+            "description": "Menú para gestionar inventarios",
+            "permissions": {
+                "ver_inventario": true,
+                "agregar_producto": true,
+                "eliminar_producto": false
+            },
+            "submenus": [
+                {
+                    "key": "/Inventario/productos",
+                    "name": "Productos",
+                    "title": "Gestión de Productos",
+                    "description": "Gestionar productos en el inventario",
+                    "permissions": {
+                        "ver_productos": true,
+                        "agregar_producto": true
+                    }
+                },
+                {
+                    "key": "/Inventario/proveedores",
+                    "name": "Proveedores",
+                    "title": "Gestión de Proveedores",
+                    "description": "Gestionar los proveedores del inventario",
+                    "permissions": {
+                        "ver_proveedores": true,
+                        "agregar_proveedor": true
+                    }
+                },
+                {
+                    "key": "/Inventario/ventas",
+                    "name": "Ventas",
+                    "title": "Gestión de Ventas",
+                    "description": "Menú para gestionar las ventas y facturación",
+                    "permissions": {
+                        "realizar_venta": true,
+                        "ver_facturas": true,
+                        "eliminar_venta": false
+                    },
+                    "submenus": [
+                        {
+                            "key": "/Inventario/ventas/facturacion",
+                            "name": "Facturación",
+                            "title": "Gestión de Facturas",
+                            "description": "Generar y gestionar facturas de ventas",
+                            "permissions": {
+                                "ver_facturas": true,
+                                "editar_facturas": false
+                            }
+                        },
+                        {
+                            "key": "/Inventario/ventas/reportes",
+                            "name": "Reportes de Ventas",
+                            "title": "Generación de Reportes de Ventas",
+                            "description": "Generar reportes de ventas y desempeño",
+                            "permissions": {
+                                "ver_reportes_ventas": true,
+                                "generar_reportes_ventas": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "/Ficha",
+            "name": "Ficha",
+            "title": "Ficha de Usuario",
+            "description": "Menú para gestionar las fichas de usuario",
+            "permissions": {
+                "ver_ficha": true,
+                "editar_ficha": false
+            },
+            "submenus": []
+        }
+    ]
+}
